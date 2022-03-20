@@ -34,8 +34,11 @@ func DrawRec() {
 				s := strings.Repeat("*", rWidth)
 				fmt.Printf("%v\n", s)
 			default:
-				s := strings.Repeat(" ", spacesCount)
-				fmt.Printf("*%s*\n", s)
+				s := "*" + strings.Repeat(" ", spacesCount)
+				if rWidth > 1 {
+					s += "*"
+				}
+				fmt.Printf("%s\n", s)
 			}
 		}
 		break
