@@ -7,7 +7,7 @@ import (
 
 func main() {
 	for {
-		packageNames := []string{"Draw Rectangle", "Second highest Int", "My Pi"}
+		packageNames := []string{"Draw Rectangle", "Second highest Int", "My Pi", "Word Counter"}
 		var userOption int
 
 		fmt.Println("Choose what program to run (int): ")
@@ -24,6 +24,8 @@ func main() {
 			lib.Second()
 		case 3:
 			lib.MyPi()
+		case 4:
+			lib.WordCount()
 		default:
 			fmt.Println("Wrong option")
 			continue
