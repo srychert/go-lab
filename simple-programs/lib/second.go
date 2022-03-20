@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"fmt"
@@ -21,12 +21,15 @@ func getSecondHighestInt(arr []int) int {
 	return secondHighest
 }
 
-func main() {
+func Second() {
 	rand.Seed(time.Now().UnixNano())
 	numbers := make([]int, 0)
 
-	for i := 0; i < 9; i++ {
-		numbers = append(numbers, rand.Intn(100))
+	itemsLength := 9
+	maxValue := 100
+
+	for i := 0; i < itemsLength; i++ {
+		numbers = append(numbers, rand.Intn(maxValue))
 	}
 
 	fmt.Println(numbers, "\n", getSecondHighestInt(numbers))

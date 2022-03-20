@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"fmt"
@@ -26,7 +26,7 @@ func piSum(n int) float64 {
 	return 4 * result
 }
 
-func main() {
+func MyPi() {
 	myPi := piSum(10_000_000_000)
 	fmt.Println(myPi)
 	fmt.Println(math.Pi)
