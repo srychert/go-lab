@@ -16,7 +16,7 @@ func licz() {
 
 	if a == ERR {
 		fmt.Print("Podaj pierwszą liczbe: ")
-		fmt.Scanf("%d", &b)
+		fmt.Scanf("%d", &a)
 	}
 
 	if b == ERR {
