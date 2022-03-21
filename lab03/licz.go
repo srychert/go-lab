@@ -16,12 +16,12 @@ func licz() {
 
 	if a == ERR {
 		fmt.Print("Podaj pierwszą liczbe: ")
-		fmt.Scanf("%d", &a)
+		fmt.Scan(&a)
 	}
 
 	if b == ERR {
 		fmt.Print("Podaj drugą liczbe: ")
-		fmt.Scanf("%d", &b)
+		fmt.Scan(&b)
 	}
 
 	fmt.Println("Suma liczba:", a, "+", b, "wynosi", a+b)
