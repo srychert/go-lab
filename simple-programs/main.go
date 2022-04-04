@@ -2,34 +2,37 @@ package main
 
 import (
 	"fmt"
+	"os"
 	lib "simple-programs/lib"
 )
 
+func drawMenu(menu []string) {
+	fmt.Println()
+	for index, value := range menu {
+		fmt.Printf("%v) %v\n", index, value)
+	}
+	fmt.Print("\nChoose what program to run (int): ")
+}
+
 func main() {
 	for {
-		packageNames := []string{"Draw Rectangle", "Second highest Int", "My Pi", "Word Counter"}
-		var userOption int
+		pNames := []string{"Exit", "Draw Rectangle", "Second highest Int", "My Pi",
+			"Word Counter", "Draw Matrix"}
 
-		fmt.Println("Choose what program to run (int): ")
-		for index, value := range packageNames {
-			fmt.Printf("%v) %v\n", index+1, value)
+		p := [...]func(){
+			func() { os.Exit(0) }, lib.DrawRec, lib.Second, lib.MyPi,
+			lib.WordCount, lib.MatrixDraw,
 		}
 
+		drawMenu(pNames)
+		var userOption int
 		fmt.Scan(&userOption)
 
-		switch userOption {
-		case 1:
-			lib.DrawRec()
-		case 2:
-			lib.Second()
-		case 3:
-			lib.MyPi()
-		case 4:
-			lib.WordCount()
-		default:
-			fmt.Println("Wrong option")
-			continue
+		if userOption >= 0 && userOption < len(p) {
+			p[userOption]()
+		} else {
+			fmt.Println("Invalid option")
 		}
-		break
+		continue
 	}
 }
