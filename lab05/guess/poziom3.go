@@ -8,11 +8,48 @@ import (
 	"time"
 )
 
+type input2 interface {
+	int | string
+}
+
+type Input struct {
+	guess   int
+	command string
+}
+
+func setInput(i interface{}) Input {
+	var input Input
+	switch v := i.(type) {
+	case nil:
+		fmt.Println("x is nil") // here v has type interface{}
+	case int:
+		fmt.Println("x is", v) // here v has type int
+		input.guess = i.(int)
+	case string:
+		fmt.Println("x is string") // here v has type interface{}
+		input.command = i.(string)
+	}
+	return input
+}
+
+func getUserInput() (int, string) {
+
+	var test any
+	var input interface{}
+	fmt.Scan(&input)
+	fmt.Println(input, test)
+	i := setInput(input)
+
+	return i.guess, i.command
+
+}
+
 func Poziom3() {
 	rand.Seed(time.Now().Unix())
-	computerNumber := rand.Intn(100) + 1
+	upperBound := 100
+	computerNumber := rand.Intn(upperBound) + 1
 	var userGuess int
-	var command string
+
 	var score int = 0
 
 	type Games struct {
@@ -23,15 +60,13 @@ func Poziom3() {
 	var games Games
 
 	fmt.Println("Teraz będziesz zgadywać liczbę, którą wylosowałem")
+	fmt.Println("Napisz 'koniec' aby wyjść")
 
 	for userGuess != computerNumber {
 		score += 1
-		fmt.Println("Podaj liczbę: ")
-		_, err := fmt.Scan(&userGuess)
-		if err != nil {
-			fmt.Println(err)
-		}
-		// fmt.Scan(&command)
+		fmt.Print("Podaj liczbę: ")
+		userGuess, command := getUserInput()
+
 		if command == "koniec" {
 			os.Exit(0)
 		}
