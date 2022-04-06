@@ -2,14 +2,22 @@ package lib
 
 import (
 	"fmt"
+	"unicode/utf8"
 )
+
 
 func printMatrix(matrix [][]int) {
 	fmt.Println("Matrix:")
 	fmt.Println("[")
-	// Printing every slice inside matrix
-	for i := 0; i < len(matrix); i++ {
-		fmt.Println(" ", matrix[i])
+	last := matrix[len(matrix) -1][len(matrix) -1]
+	last_str := fmt.Sprintf("%v", last)
+	lenOfEle := utf8.RuneCountInString(last_str) + 1
+// 	Printing every slice inside matrix
+	for _, value := range matrix{
+	    for _, v2 := range value{
+	        fmt.Printf("%*d", lenOfEle, v2)
+	    }
+		fmt.Println()
 	}
 	fmt.Print("]")
 }
