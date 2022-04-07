@@ -16,8 +16,6 @@ GAME:
 	computerNumber := rand.Intn(upperBound) + 1
 	input := Input{0, ""}
 
-	fmt.Println(computerNumber)
-
 	var score int = 0
 
 	fmt.Printf("Teraz będziesz zgadywać liczbę, którą wylosowałem z przedziału [1, %v]\n", upperBound)
