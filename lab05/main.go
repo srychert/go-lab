@@ -6,6 +6,7 @@ func main() {
 
 	// guess.Poziom1()
 	// guess.Poziom2()
-	guess.Poziom3()
+	// guess.Poziom3()
+	guess.Poziom4()
 
 }
