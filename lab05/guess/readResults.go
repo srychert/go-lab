@@ -17,8 +17,8 @@ func check(e error) {
 func readResults() map[Date][]Result {
 	m := make(map[Date][]Result)
 	// check if file exists
-	if _, err := os.Stat("hallOfFame.json"); err == nil {
-		data, err := ioutil.ReadFile("hallOfFame.json")
+	if _, err := os.Stat(filePath); err == nil {
+		data, err := ioutil.ReadFile(filePath)
 		check(err)
 
 		errj := json.Unmarshal(data, &m)

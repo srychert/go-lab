@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+var filePath string = "website/public/hallOfFame.json"
+
 type Input struct {
 	guess   int
 	command string
