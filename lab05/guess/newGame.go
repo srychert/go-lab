@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"sort"
 	"strings"
-	"time"
 )
 
 type Result struct {
@@ -14,7 +13,6 @@ type Result struct {
 }
 
 func makeJSON(games []Result) string {
-	fmt.Println(games)
 	sort.Slice(games, func(i, j int) bool {
 		if games[i].Score != games[j].Score {
 			return games[i].Score < games[j].Score
@@ -26,10 +24,9 @@ func makeJSON(games []Result) string {
 	return string(r_json)
 }
 
-func newGame(poziom func(), games []Result) bool {
+func newGame(games []Result) bool {
 	var newGame string
 NEWGAME:
-	fmt.Println(time.Now())
 	fmt.Print("Gramy jeszcze raz? [T/N]: ")
 	fmt.Scanln(&newGame)
 	if strings.ToUpper(newGame) == "T" {

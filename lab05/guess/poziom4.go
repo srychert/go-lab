@@ -40,7 +40,7 @@ GAME:
 	}
 
 	games = addToGames(games, score)
-	if newGame(Poziom4, games) {
+	if newGame(games) {
 		goto GAME
 	}
 }
