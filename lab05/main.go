@@ -1,14 +1,11 @@
 package main
 
-import guess "lab05/guess"
+import "lab05/guess"
 
 func main() {
-
-	// guess.Poziom1()
-	// guess.Poziom2()
-	// guess.Poziom3()
-	// guess.Poziom4()
+	// old.Poziom1()
+	// old.Poziom2()
+	// old.Poziom3()
+	// old.Poziom4()
 	guess.Poziom5()
-	// test()
-
 }
