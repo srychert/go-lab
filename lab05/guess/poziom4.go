@@ -17,7 +17,7 @@ GAME:
 	input := Input{0, ""}
 
 	var score int = 0
-	fmt.Println(computerNumber)
+	// fmt.Println(computerNumber)
 	fmt.Printf("Teraz będziesz zgadywać liczbę, którą wylosowałem z przedziału [1, %v]\n", upperBound)
 	fmt.Println("Napisz 'koniec' aby wyjść")
 
