@@ -8,12 +8,11 @@ func checkScore(name string, score int, results *map[Date][]Result) bool {
 	new := true
 
 	date := todayDate()
-
+	best = (*results)[date][0].Score
 	for d, r := range *results {
 		if d.toString() == date.toString() {
 			new = false
 		}
-		best = r[0].Score
 		for _, v := range r {
 			if v.Score < best {
 				best = v.Score
