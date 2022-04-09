@@ -3,7 +3,6 @@ package guess
 import (
 	"encoding/json"
 	"fmt"
-	"sort"
 	"strings"
 )
 
@@ -12,19 +11,15 @@ type Result struct {
 	Score int
 }
 
+// json of all games from session
 func makeJSON(games []Result) string {
-	sort.Slice(games, func(i, j int) bool {
-		if games[i].Score != games[j].Score {
-			return games[i].Score < games[j].Score
-		}
-		return games[i].Name < games[j].Name
-	})
+	g := sortGames(games)
 
-	r_json, _ := json.MarshalIndent(games, "", "  ")
+	r_json, _ := json.MarshalIndent(g, "", "  ")
 	return string(r_json)
 }
 
-func newGame(games []Result) bool {
+func newGame(games []Result, results map[Date][]Result) bool {
 	var newGame string
 NEWGAME:
 	fmt.Print("Gramy jeszcze raz? [T/N]: ")
@@ -32,8 +27,9 @@ NEWGAME:
 	if strings.ToUpper(newGame) == "T" {
 		return true
 	} else if strings.ToUpper(newGame) == "N" {
-		results := makeJSON(games)
-		fmt.Println(results)
+		results_string := makeJSON(games)
+		fmt.Println(results_string)
+		saveResults(results)
 		return false
 	} else {
 		goto NEWGAME
