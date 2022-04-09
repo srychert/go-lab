@@ -6,11 +6,6 @@ import (
 	"strings"
 )
 
-type Result struct {
-	Name  string
-	Score int
-}
-
 // json of all games from session
 func makeJSON(games []Result) string {
 	g := sortGames(games)

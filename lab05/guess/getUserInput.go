@@ -5,11 +5,6 @@ import (
 	"strconv"
 )
 
-type Input struct {
-	guess   int
-	command string
-}
-
 func getUserInput() Input {
 	var scanedString string
 	fmt.Scanln(&scanedString)
