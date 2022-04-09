@@ -39,8 +39,9 @@ GAME:
 		}
 	}
 
-	games = addToGames(games, score)
-	if newGame(games) {
+	games = addToGamesOld(games, score)
+	m := make(map[Date][]Result)
+	if newGame(games, m) {
 		goto GAME
 	}
 }
