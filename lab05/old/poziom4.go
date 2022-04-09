@@ -1,4 +1,4 @@
-package guess
+package old
 
 import (
 	"fmt"
@@ -7,18 +7,26 @@ import (
 	"time"
 )
 
-func Poziom2() {
+func Poziom4() {
+	// defined in newGame.go
+	var games []Result
+GAME:
 	rand.Seed(time.Now().Unix())
 	upperBound := 100
 	computerNumber := rand.Intn(upperBound) + 1
 	input := Input{0, ""}
 
+	var score int = 0
+	// fmt.Println(computerNumber)
 	fmt.Printf("Teraz będziesz zgadywać liczbę, którą wylosowałem z przedziału [1, %v]\n", upperBound)
 	fmt.Println("Napisz 'koniec' aby wyjść")
 
 	for input.guess != computerNumber {
 		fmt.Print("Podaj liczbę: ")
 		input = getUserInput()
+		if input.guess != 0 {
+			score++
+		}
 		if input.command == "koniec" {
 			fmt.Println("Żegnaj")
 			os.Exit(0)
@@ -30,5 +38,9 @@ func Poziom2() {
 			fmt.Println("Za duża")
 		}
 	}
-	fmt.Println("Brawo wygrałeś!")
+
+	games = addToGames(games, score)
+	if newGame(games) {
+		goto GAME
+	}
 }
