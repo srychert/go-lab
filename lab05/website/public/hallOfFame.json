@@ -1,22 +1,26 @@
 {
   "08-04-2022": [
     {
-      "Name": "seba",
+      "Name": "szeroki",
       "Score": 1
     },
     {
-      "Name": "mati",
-      "Score": 20
+      "Name": "magister",
+      "Score": 4
     }
   ],
   "09-04-2022": [
     {
       "Name": "seba",
+      "Score": 3
+    },
+    {
+      "Name": "admin",
       "Score": 6
     },
     {
-      "Name": "mati",
-      "Score": 8
+      "Name": "keller",
+      "Score": 9999999
     }
   ]
 }
