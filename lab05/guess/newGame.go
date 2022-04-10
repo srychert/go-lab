@@ -17,7 +17,7 @@ func makeJSON(games []Result) string {
 func newGame(games []Result, results map[Date][]Result) bool {
 	var newGame string
 NEWGAME:
-	fmt.Print("Gramy jeszcze raz? [T/N]: ")
+	fmt.Println("Gramy jeszcze raz? [T/N]:")
 	fmt.Scanln(&newGame)
 	if strings.ToUpper(newGame) == "T" {
 		return true

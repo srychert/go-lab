@@ -7,7 +7,7 @@ import (
 func addToGames(games []Result, score int, results *map[Date][]Result) []Result {
 	fmt.Println("Brawo wygrałeś!")
 	var name string
-	fmt.Print("Podaj imie: ")
+	fmt.Println("Podaj imie:")
 	fmt.Scanln(&name)
 	// msg personal or global best; returns true if new entry in map (date)
 	n := checkScore(name, score, results)
