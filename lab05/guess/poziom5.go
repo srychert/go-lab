@@ -1,10 +1,11 @@
 package guess
 
 import (
+	crypto_rand "crypto/rand"
+	"encoding/binary"
 	"fmt"
-	"math/rand"
+	math_rand "math/rand"
 	"os"
-	"time"
 )
 
 func Poziom5() {
@@ -13,9 +14,14 @@ func Poziom5() {
 	// read results form file
 	results := readResults()
 GAME:
-	rand.Seed(time.Now().Unix())
+	var b [8]byte
+	_, err := crypto_rand.Read(b[:])
+	if err != nil {
+		panic("cannot seed math/rand package with cryptographically secure random number generator")
+	}
+	math_rand.Seed(int64(binary.LittleEndian.Uint64(b[:])))
 	upperBound := 100
-	computerNumber := rand.Intn(upperBound) + 1
+	computerNumber := math_rand.Intn(upperBound) + 1
 	input := Input{0, ""}
 
 	var score int = 0
@@ -24,9 +30,9 @@ GAME:
 	fmt.Println("Napisz 'koniec' aby wyjść")
 
 	for input.guess != computerNumber {
-		fmt.Print("Podaj liczbę: ")
+		fmt.Println("Podaj liczbę:")
 		input = getUserInput()
-		if input.guess != 0 {
+		if input.guess != 0 {	
 			score++
 		}
 		if input.command == "koniec" {
