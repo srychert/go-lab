@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var filePath string = "website/public/hallOfFame.json"
+var filePath string = "./hallOfFame.json"
 
 type Input struct {
 	guess   int

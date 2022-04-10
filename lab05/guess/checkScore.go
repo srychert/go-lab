@@ -8,7 +8,9 @@ func checkScore(name string, score int, results *map[Date][]Result) bool {
 	new := true
 
 	date := todayDate()
-	best = (*results)[date][0].Score
+	const MaxUint = ^uint(0)
+	const MaxInt = int(MaxUint >> 1)
+	best = MaxInt
 	for d, r := range *results {
 		if d.toString() == date.toString() {
 			new = false
