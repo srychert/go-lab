@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 )
@@ -30,8 +31,13 @@ func main() {
 	upperBoundLoop := upperBound
 	guess := upperBound / 2
 
-	i := 0
-	stop := 10
+	i := 1
+	stop := flag.Int("stop", 10, "set number of games after program stops - default 10")
+	flag.Parse()
+	if *stop < 1 {
+		*stop = 10
+	}
+	printMsg(*stop)
 
 	// max log2(upperbound) rounded up, e.g.:
 	// upperVound = 100 => iterations = 7
@@ -69,8 +75,7 @@ func main() {
 		case "Nowy rekord rankingu!\n":
 			continue
 		case "Gramy jeszcze raz? [T/N]:\n":
-			// when to stop?
-			if i >= stop {
+			if i >= *stop {
 				fmt.Println("n")
 				play = false
 				input, _ = reader.ReadString(']')
