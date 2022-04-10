@@ -23,6 +23,8 @@ func readResults() map[Date][]Result {
 
 		errj := json.Unmarshal(data, &m)
 		check(errj)
+	} else {
+		filePath = "./hallOfFame.json"
 	}
 	return m
 }
