@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        #container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            font-size: x-large;
+        }
+
+        form {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div>
+            <form method="POST" action="/form">
+                <label>Name</label>
+                <input name="name" type="text" value="" />
+                <label>Age</label>
+                <input name="age" type="number" min="1" />
+
+                <button type="submit">Submit</button>
+            </form>
+            <div style="width: 100%;">
+                <ul>
+                    <!-- Form results -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var form = document.querySelector("form");
+        var ul = document.querySelector("ul");
+        function formSubmit(e) {
+            var url = "/form";
+            var request = new XMLHttpRequest();
+            request.open('POST', url, true);
+            request.onload = function () { // request successful
+                // we can use server response to our request now
+                const person = JSON.parse(request.responseText)
+                console.log(person)
+                li = document.createElement("li");
+                li.innerText = `${person.Person.name} ${person.Person.age} ${person.Date}`;
+                ul.append(li);
+                form.reset();
+            };
+
+            request.onerror = function (err) {
+                console.error(err)
+            };
+
+            const formData = new FormData(e.target);
+            const formProps = Object.fromEntries(formData);
+            request.send(JSON.stringify(formProps));
+            event.preventDefault();
+        }
+        form.addEventListener("submit", formSubmit);
+    </script>
+</body>
+
+</html>
