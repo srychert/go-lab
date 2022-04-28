@@ -15,15 +15,14 @@ func drawMenu(menu []string) {
 }
 
 func main() {
+	pNames := []string{"Exit", "Draw Rectangle", "Second highest Int", "My Pi",
+		"Word Counter", "Draw Matrix"}
+
+	p := [...]func(){
+		func() { os.Exit(0) }, lib.DrawRec, lib.Second, lib.MyPi,
+		lib.WordCount, lib.MatrixDraw,
+	}
 	for {
-		pNames := []string{"Exit", "Draw Rectangle", "Second highest Int", "My Pi",
-			"Word Counter", "Draw Matrix"}
-
-		p := [...]func(){
-			func() { os.Exit(0) }, lib.DrawRec, lib.Second, lib.MyPi,
-			lib.WordCount, lib.MatrixDraw,
-		}
-
 		drawMenu(pNames)
 		var userOption int
 		fmt.Scan(&userOption)
