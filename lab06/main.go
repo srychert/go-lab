@@ -156,6 +156,7 @@ func main() {
 	antP := flag.Int("a", 10, "percentage of ants")
 	leafP := flag.Int("l", 90, "percentage of leafs")
 	iter := flag.Int("i", 1000, "number of iterations")
+	draw := flag.Bool("draw", true, "draw every frame")
 	flag.Parse()
 
 	board := [dim][dim]string{}
@@ -189,9 +190,15 @@ func main() {
 			ants[i] = a
 		}
 
-		fmt.Println("ants:", len(ants), "leafs:", len(leafs))
-
-		drawBoard(leafs, ants)
+		if *draw {
+			fmt.Println("ants:", len(ants), "leafs:", len(leafs))
+			drawBoard(leafs, ants)
+		} else {
+			if i == *iter-2 {
+				fmt.Println("ants:", len(ants), "leafs:", len(leafs))
+				drawBoard(leafs, ants)
+			}
+		}
 	}
 
 	// count how many ants carry a leaf at the end
