@@ -194,7 +194,7 @@ func main() {
 			fmt.Println("ants:", len(ants), "leafs:", len(leafs))
 			drawBoard(leafs, ants)
 		} else {
-			if i == *iter-2 {
+			if i == *iter-1 {
 				fmt.Println("ants:", len(ants), "leafs:", len(leafs))
 				drawBoard(leafs, ants)
 			}
